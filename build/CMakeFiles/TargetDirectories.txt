@@ -1,0 +1,3 @@
+/home/zxh/study/cpp/tiny-logger/build/CMakeFiles/test.dir
+/home/zxh/study/cpp/tiny-logger/build/CMakeFiles/edit_cache.dir
+/home/zxh/study/cpp/tiny-logger/build/CMakeFiles/rebuild_cache.dir

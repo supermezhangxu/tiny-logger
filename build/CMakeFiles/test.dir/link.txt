@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/test.dir/src/AsyncLogging.cpp.o CMakeFiles/test.dir/src/FileUtil.cpp.o CMakeFiles/test.dir/src/LogFile.cpp.o CMakeFiles/test.dir/src/LogStream.cpp.o CMakeFiles/test.dir/src/Logging.cpp.o CMakeFiles/test.dir/src/base/Thread.cpp.o CMakeFiles/test.dir/src/base/Timestamp.cpp.o CMakeFiles/test.dir/test/main.cpp.o -o ../bin/test 
