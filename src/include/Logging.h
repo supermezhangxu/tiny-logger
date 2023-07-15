@@ -5,7 +5,6 @@
 #include "LogStream.h"
 
 #include <stdio.h>
-#include <sys/time.h>
 #include <errno.h>
 #include <string.h>
 #include <functional>
@@ -98,7 +97,7 @@ inline Logger::LogLevel logLevel()
 }
 
 // 获取errno信息
-const char* getErrnoMsg(int savedErrno);
+//const char* getErrnoMsg(int savedErrno);
 
 /**
  * 当日志等级小于对应等级才会输出

@@ -4,7 +4,6 @@
 #include "base/noncopyable.h"
 #include <assert.h>
 #include <string.h> // memcpy
-#include <strings.h>
 #include <string>
 
 const int kSmallBuffer = 4000;
@@ -36,7 +35,7 @@ public:
     void add(size_t len) { cur_ += len; }
 
     void reset() { cur_ = data_; }
-    void bzero() { ::bzero(data_, sizeof(data_)); }
+    void bzero() { memset(data_, 0, sizeof(data_)); }
 
     std::string toString() const { return std::string(data_, length()); }
 

@@ -2,11 +2,11 @@
 #include "Logging.h"
 
 FileUtil::FileUtil(std::string& fileName)
-    : fp_(::fopen(fileName.c_str(), "ae")),
-      writtenBytes_(0)
+    : fp_(::fopen(fileName.c_str(), "a+")),
+    writtenBytes_(0)
 {
     // 将fd_缓冲区设置为本地的buffer_
-    ::setbuffer(fp_, buffer_, sizeof(buffer_));
+    ::setvbuf(fp_, buffer_, _IOFBF, sizeof(buffer_));
 }
 
 FileUtil::~FileUtil()
@@ -29,7 +29,7 @@ void FileUtil::append(const char* data, size_t len)
             int err = ferror(fp_);
             if (err)
             {
-                fprintf(stderr, "FileUtil::append() failed %s\n", getErrnoMsg(err));
+                fprintf(stderr, "FileUtil::append() failed %s\n", "occur error");
             }
         }
         // 更新写入的数据大小
@@ -53,5 +53,5 @@ size_t FileUtil::write(const char* data, size_t len)
      * -- count:数据个数
      * -- stream:文件指针
      */
-    return ::fwrite_unlocked(data, 1, len, fp_);
+    return ::_fwrite_nolock(data, 1, len, fp_);
 }

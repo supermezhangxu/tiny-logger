@@ -91,7 +91,12 @@ std::string LogFile::getLogFileName(const std::string& basename, time_t* now)
     char timebuf[32];
     struct tm tm;
     *now = time(NULL);
+#ifdef _WIN32
+    localtime_s(&tm, now);
+#else
     localtime_r(now, &tm);
+#endif // _WIN32_
+
     // 写入时间
     strftime(timebuf, sizeof timebuf, ".%Y%m%d-%H%M%S", &tm);
     filename += timebuf;

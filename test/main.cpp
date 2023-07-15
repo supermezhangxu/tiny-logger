@@ -3,7 +3,6 @@
 #include "base/Timestamp.h"
 
 #include <stdio.h>
-#include <unistd.h>
 
 
 static const off_t kRollSize = 1*1024*1024;
@@ -48,10 +47,8 @@ int main(int argc, char* argv[])
 {
     printf("pid = %d\n", getpid());
 
-    AsyncLogging log(::basename(argv[0]), kRollSize);
+    AsyncLogging log("test_log", kRollSize);
     test_Logging();
-
-    sleep(1);
 
     g_asyncLog = &log;
     Logger::setOutput(asyncLog); // 为Logger设置输出回调, 重新配接输出位置
@@ -87,7 +84,6 @@ int main(int argc, char* argv[])
     t2.join();
     t3.join();
 
-    sleep(1);
     log.stop();
     return 0;
 }

@@ -10,10 +10,10 @@ struct ThreadInfo
 
 thread_local ThreadInfo thread_info;
 
-const char* getErrnoMsg(int savedErrno)
-{
-    return strerror_r(savedErrno, thread_info.t_errnobuf, sizeof(thread_info.t_errnobuf));
-}
+//const char* geterrnomsg(int savederrno)
+//{
+//    return strerror_r(savederrno, thread_info.t_errnobuf, sizeof(thread_info.t_errnobuf)); 
+//}
 
 // 根据Level返回Level名字
 const char* getLevelName[Logger::LogLevel::LEVEL_COUNT]
@@ -62,10 +62,10 @@ Logger::Impl::Impl(Logger::LogLevel level, int savedErrno, const char* file, int
     // 写入日志等级
     stream_ << GeneralTemplate(getLevelName[level], 6);
     // TODO:error
-    if (savedErrno != 0)
+    /*if (savedErrno != 0)
     {
         stream_ << getErrnoMsg(savedErrno) << " (errno=" << savedErrno << ") ";
-    }
+    }*/
 }
 
 // Timestamp::toString方法的思路，只不过这里需要输出到流
@@ -104,7 +104,7 @@ void Logger::Impl::formatThreadId()
     thread_id = thread_id + " ";
 
     const int bufferSize = thread_id.length();
-    char buffer[bufferSize];
+    char buffer[256];
 
     strncpy(buffer, thread_id.c_str(), bufferSize);
           
