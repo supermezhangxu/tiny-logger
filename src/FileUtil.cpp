@@ -53,5 +53,10 @@ size_t FileUtil::write(const char* data, size_t len)
      * -- count:数据个数
      * -- stream:文件指针
      */
+#ifdef _WIN32
     return ::_fwrite_nolock(data, 1, len, fp_);
+#else
+    return ::fwrite_unlocked(data, 1, len, fp_);
+#endif
+
 }

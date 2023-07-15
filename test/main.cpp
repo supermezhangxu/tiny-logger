@@ -45,7 +45,6 @@ void asyncLog(const char* msg, int len)
 
 int main(int argc, char* argv[])
 {
-    printf("pid = %d\n", getpid());
 
     AsyncLogging log("test_log", kRollSize);
     test_Logging();
